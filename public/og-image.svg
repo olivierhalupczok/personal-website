@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#0ea5e9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative blobs -->
+  <circle cx="1100" cy="100" r="200" fill="#2563eb" opacity="0.1"/>
+  <circle cx="100" cy="530" r="150" fill="#0ea5e9" opacity="0.1"/>
+
+  <!-- Content -->
+  <text x="100" y="250" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#ffffff">Olivier Halupczok</text>
+  <text x="100" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="500" fill="#2563eb">GenAI Engineer</text>
+
+  <!-- Tagline -->
+  <text x="100" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#a0a0b0">Building chatbots, multi-agent systems,</text>
+  <text x="100" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#a0a0b0">and RAG pipelines</text>
+
+  <!-- Accent line -->
+  <rect x="100" y="500" width="120" height="4" fill="url(#accent)" rx="2"/>
+
+  <!-- URL -->
+  <text x="100" y="570" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#606070">olivierh.dev</text>
+</svg>

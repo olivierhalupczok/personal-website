@@ -8,6 +8,9 @@ const {
   title = "Olivier Halupczok - GenAI Engineer",
   description = "GenAI Engineer with 3 years building AI products. I design and ship production chatbots, multi-agent systems, and RAG pipelines."
 } = Astro.props;
+
+const siteUrl = "https://olivierh.dev";
+const ogImage = `${siteUrl}/og-image.svg`;
 ---
 
 <!doctype html>
@@ -17,19 +20,40 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content="Olivier Halupczok" />
+    <link rel="canonical" href={siteUrl} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Olivier Halupczok" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Olivier Halupczok",
+      "url": siteUrl,
+      "image": ogImage,
+      "jobTitle": "GenAI Engineer",
+      "description": description,
+      "sameAs": [
+        "https://github.com/olivierhalupczok",
+        "https://www.linkedin.com/in/olivier-halupczok/"
+      ],
+      "knowsAbout": ["Generative AI", "Machine Learning", "Multi-agent Systems", "RAG Pipelines", "Chatbots"]
+    })} />
 
     <!-- Critical CSS - Inlined for first paint -->
     <style is:inline>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://olivierh.dev/sitemap-index.xml
