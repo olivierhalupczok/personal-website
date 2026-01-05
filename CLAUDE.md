@@ -37,7 +37,7 @@ This is a GenAI Engineer portfolio built with **Astro + Preact**, optimized for 
 
 ### Design System
 
-- Dark glassmorphism theme with indigo accent (`#6366f1`)
+- Dark glassmorphism theme with indigo accent (`#2563eb`)
 - `.glass` class for frosted glass effect
 - `[data-animate]` attributes trigger CSS animations via IntersectionObserver
 
