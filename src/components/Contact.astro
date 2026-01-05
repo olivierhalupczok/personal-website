@@ -1,0 +1,59 @@
+---
+import ContactForm from './ContactForm';
+---
+
+<section id="contact">
+  <div class="container">
+    <h2 data-animate="left">Let's Connect</h2>
+    <div class="contact-grid">
+      <div class="contact-info" data-animate="left" data-delay="1">
+        <p>
+          Have a project in mind? Want to discuss AI solutions for your business?
+          Or just want to say hi? I'd love to hear from you.
+        </p>
+        <div class="contact-links" style="margin-top: 2rem;">
+          <a href="mailto:olivierhalupczok@gmail.com" class="contact-link" data-animate data-delay="2">
+            <img src="/icons/email.svg" alt="" width="20" height="20" loading="lazy" class="icon" />
+            olivierhalupczok@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/olivierhalupczok" target="_blank" rel="noopener" class="contact-link" data-animate data-delay="3">
+            <img src="/icons/linkedin.svg" alt="" width="20" height="20" loading="lazy" class="icon" />
+            LinkedIn
+          </a>
+          <a href="https://github.com/olivierhalupczok" target="_blank" rel="noopener" class="contact-link" data-animate data-delay="4">
+            <img src="/icons/github.svg" alt="" width="20" height="20" loading="lazy" class="icon" />
+            GitHub
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrapper glass" data-animate="right" data-delay="2" style="padding: 1.5rem;">
+        <ContactForm client:visible />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    margin-top: 2rem;
+  }
+  .contact-info p {
+    font-size: 1.1rem;
+    max-width: 400px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #a0a0b0;
+    transition: color 0.2s;
+  }
+  .contact-link:hover {
+    color: #fff;
+  }
+</style>

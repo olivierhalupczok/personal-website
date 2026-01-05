@@ -1,0 +1,72 @@
+---
+const typingPhrases = [
+  "Chatbots",
+  "Multi-agent Systems",
+  "RAG Pipelines",
+  "Voice AI",
+  "Custom ML Models"
+];
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-animate" style="--delay: 0">Olivier Halupczok</h1>
+      <p class="subtitle hero-animate" style="--delay: 1">GenAI Engineer</p>
+      <p class="typing hero-animate" style="--delay: 2">
+        Building <span class="typing-text" id="typing-text"></span>
+      </p>
+      <div class="cta-group hero-animate" style="--delay: 3">
+        <a href="#projects" class="btn btn-primary">
+          See My Work
+          <img src="/icons/arrow.svg" alt="" width="16" height="16" loading="lazy" class="icon" />
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/olivierhalupczok" target="_blank" rel="noopener" aria-label="GitHub">
+            <img src="/icons/github.svg" alt="" width="20" height="20" loading="lazy" class="icon" />
+          </a>
+          <a href="https://linkedin.com/in/olivierhalupczok" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <img src="/icons/linkedin.svg" alt="" width="20" height="20" loading="lazy" class="icon" />
+          </a>
+          <a href="mailto:olivierhalupczok@gmail.com" aria-label="Email">
+            <img src="/icons/email.svg" alt="" width="20" height="20" loading="lazy" class="icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ typingPhrases }}>
+  const el = document.getElementById('typing-text');
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const phrase = typingPhrases[phraseIndex];
+
+    if (isDeleting) {
+      el.textContent = phrase.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      el.textContent = phrase.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let delay = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === phrase.length) {
+      delay = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+      delay = 500;
+    }
+
+    setTimeout(type, delay);
+  }
+
+  type();
+</script>

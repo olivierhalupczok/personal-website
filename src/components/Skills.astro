@@ -1,0 +1,50 @@
+---
+const skillGroups = [
+  {
+    title: "LLMs & Agents",
+    skills: ["OpenAI", "Claude", "PydanticAI", "Dspy", "LangChain", "LangGraph", "CrewAI", "Guardrails", "LLM Observability"]
+  },
+  {
+    title: "RAG & ML",
+    skills: ["RAG", "Vector DBs", "Embeddings", "LLM Evaluation", "Prompt Engineering", "Agentic AI"]
+  },
+  {
+    title: "Cloud & Infrastructure",
+    skills: ["GCP Vertex AI", "AWS", "Vercel", "Supabase", "Docker", "CI/CD"]
+  },
+  {
+    title: "Full-stack",
+    skills: ["Python", "FastAPI", "TypeScript", "Node.js", "NestJS", "React", "Angular", "Postgres"]
+  }
+];
+---
+
+<section id="skills">
+  <div class="container">
+    <h2 data-animate="left">Skills</h2>
+    <div class="skills-grid">
+      {skillGroups.map((group, groupIndex) => (
+        <div class="skill-group glass" data-animate data-delay={groupIndex + 1}>
+          <h3>{group.title}</h3>
+          <div class="skill-tags">
+            {group.skills.map((skill) => (
+              <span class="skill-tag glass">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .skill-group {
+    padding: 1.5rem;
+  }
+</style>

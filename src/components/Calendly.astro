@@ -1,0 +1,35 @@
+---
+// Calendly Badge Widget - loaded non-blocking
+---
+
+<!-- Calendly badge widget - non-blocking -->
+<link
+  rel="preload"
+  href="https://assets.calendly.com/assets/external/widget.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<noscript>
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+</noscript>
+
+<script is:inline async src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script is:inline>
+  window.addEventListener('load', function() {
+    if (typeof Calendly !== 'undefined') {
+      Calendly.initBadgeWidget({
+        url: 'https://calendly.com/olivierhalupczok/30min',
+        text: 'Book a call',
+        color: '#6366f1',
+        textColor: '#ffffff',
+        branding: false
+      });
+      // Track Calendly button clicks
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.closest('.calendly-badge-widget')) {
+          if (window.va) window.va('event', { name: 'Calendly Opened' });
+        }
+      });
+    }
+  });
+</script>

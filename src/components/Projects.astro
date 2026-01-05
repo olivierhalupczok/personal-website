@@ -1,0 +1,48 @@
+---
+const projects = [
+  {
+    title: "Voice-to-Voice AI English Tutor",
+    role: "GenAI Engineer / AI Tech Lead",
+    description: "AI-driven English learning product with real-time 1:1 lessons. Hybrid LLM stack with speech models (STT/TTS/S2S), GCP infrastructure for GPU inference, multi-agent system for adaptive lesson generation.",
+    tags: ["Multi-LLM", "Voice AI", "GCP", "Multi-agent"]
+  },
+  {
+    title: "Multi-agent Automation Center",
+    role: "GenAI Engineer",
+    description: "B2B task automation with Gmail/Outlook integration. Continuously gathers context, groups messages, automates calendars, executes tasks based on email content.",
+    tags: ["Multi-agent", "Email API", "Automation"]
+  },
+  {
+    title: "Radio Analytics Big Data System",
+    role: "Software Engineer",
+    description: "Production system analyzing global radio signals. Migrated Java → Python, reduced costs 65%, added real-time anomaly detection with ML.",
+    tags: ["Python", "FastAPI", "Kafka", "Spark", "ML"]
+  }
+];
+---
+
+<section id="projects">
+  <div class="container">
+    <h2 data-animate="left">Projects</h2>
+    <div class="projects-grid">
+      {projects.map((project, index) => (
+        <article class="project-card glass" data-animate="scale" data-delay={index + 1}>
+          <h3>{project.title}</h3>
+          <p class="role">{project.role}</p>
+          <p>{project.description}</p>
+          <div class="project-tags">
+            {project.tags.map(tag => (
+              <span class="project-tag">{tag}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-grid {
+    margin-top: 2rem;
+  }
+</style>
