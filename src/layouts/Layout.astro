@@ -79,7 +79,17 @@ const ogImage = `${siteUrl}/og-image.png`;
       const o=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add('visible'),o.unobserve(e.target))})},{threshold:.1});
       document.querySelectorAll('[data-animate]').forEach(e=>o.observe(e));
       const n=document.querySelector('nav');
-      window.addEventListener('scroll',()=>{n.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+      const blobs=document.querySelectorAll('.blob');
+      window.addEventListener('scroll',()=>{
+        n.classList.toggle('scrolled',window.scrollY>50);
+        const y=window.scrollY;
+        blobs[0].style.setProperty('--scroll-x',y*0.03+'px');
+        blobs[0].style.setProperty('--scroll-y',y*0.02+'px');
+        blobs[1].style.setProperty('--scroll-x',y*0.02+'px');
+        blobs[1].style.setProperty('--scroll-y',y*-0.04+'px');
+        blobs[2].style.setProperty('--scroll-x',y*0.015+'px');
+        blobs[2].style.setProperty('--scroll-y',y*-0.02+'px');
+      },{passive:true});
 
       // Track section views
       const tracked=new Set();

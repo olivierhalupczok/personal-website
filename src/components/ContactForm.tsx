@@ -71,7 +71,7 @@ export default function ContactForm() {
   if (state === 'success') {
     return (
       <div class="form-success glass" style={{ padding: '2rem', textAlign: 'center' }}>
-        <img src="/icons/check.svg" alt="" width="48" height="48" style={{ marginBottom: '1rem' }} />
+        <img src="/icons/check.svg" alt="" width="48" height="48" loading="lazy" style={{ marginBottom: '1rem' }} />
         <p style={{ color: '#10b981', fontSize: '1.25rem', marginBottom: '0.5rem' }}>Message sent!</p>
         <p style={{ color: '#a0a0b0' }}>I'll get back to you soon.</p>
         <button
@@ -108,12 +108,12 @@ export default function ContactForm() {
         {state === 'loading' ? (
           <>
             Sending...
-            <img src="/icons/spinner.svg" alt="" width="16" height="16" class="spinner" />
+            <img src="/icons/spinner.svg" alt="" width="16" height="16" loading="lazy" class="spinner" />
           </>
         ) : (
           <>
             Send Message
-            <img src="/icons/send.svg" alt="" width="16" height="16" class="icon" />
+            <img src="/icons/send.svg" alt="" width="16" height="16" loading="lazy" class="icon" />
           </>
         )}
       </button>

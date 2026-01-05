@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import photo from '/public/imgs/photo.png';
 ---
 
 <section id="about">
@@ -6,7 +8,7 @@
     <h2 data-animate="left">About</h2>
     <div class="about-grid">
       <div class="about-photo" data-animate="scale" data-delay="1">
-        <img src="/imgs/photo.png" alt="Olivier Halupczok" width="280" height="280" loading="lazy" />
+        <Image src={photo} alt="Olivier Halupczok" width={280} height={280} loading="lazy" />
       </div>
       <div class="about-text">
         <p data-animate="blur" data-delay="2">

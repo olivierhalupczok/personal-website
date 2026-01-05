@@ -13,29 +13,31 @@
   border-radius: 50%;
   filter: blur(100px);
   opacity: 0.15;
+  --scroll-x: 0px;
+  --scroll-y: 0px;
   animation: float 20s infinite ease-in-out;
 }
 .blob-1 {
   width: 600px;
   height: 600px;
   background: #2563eb;
-  top: -200px;
-  right: -200px;
+  top: calc(-200px + var(--scroll-y));
+  right: calc(-200px - var(--scroll-x));
 }
 .blob-2 {
   width: 500px;
   height: 500px;
   background: #0ea5e9;
-  bottom: -150px;
-  left: -150px;
+  bottom: calc(-150px - var(--scroll-y));
+  left: calc(-150px + var(--scroll-x));
   animation-delay: -10s;
 }
 .blob-3 {
   width: 400px;
   height: 400px;
   background: #2563eb;
-  top: 50%;
-  left: 50%;
+  top: calc(50% + var(--scroll-y));
+  left: calc(50% + var(--scroll-x));
   transform: translate(-50%, -50%);
   animation-delay: -5s;
 }
