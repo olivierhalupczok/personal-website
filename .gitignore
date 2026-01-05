@@ -26,3 +26,6 @@ npm-debug.log*
 
 # Vercel
 .vercel/
+
+# Temporary files (still accessible to Claude Code)
+tmp/
