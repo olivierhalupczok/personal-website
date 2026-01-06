@@ -1,0 +1,38 @@
+# Olivier Halupczok
+
+> GenAI Engineer with 3 years building AI products and 6 years in software engineering. Specializes in production chatbots, multi-agent systems, and RAG pipelines.
+
+Olivier is a GenAI Engineer based in Poland. He is a member of the AI Working Group assisting the Polish Ministry of Digital Affairs on AI adoption strategy. Expert in AI-enhanced development with tools like Cursor and Claude Code.
+
+## Contact
+
+- [Email](mailto:olivierhalupczok@gmail.com): Direct contact
+- [LinkedIn](https://www.linkedin.com/in/olivier-halupczok/): Professional profile
+- [GitHub](https://github.com/olivierhalupczok): Code repositories
+- [Book a call](https://calendly.com/olivierhalupczok/30min): Schedule a 30-minute meeting
+
+## Expertise
+
+### LLMs & Agents
+OpenAI, Claude, PydanticAI, Dspy, LangChain, LangGraph, CrewAI, Guardrails
+
+### RAG & ML
+RAG pipelines, Vector databases, Embeddings, LLM evaluation, Prompt engineering, Agentic AI
+
+### Cloud & Infrastructure
+GCP Vertex AI, AWS, Vercel, Supabase, Docker, CI/CD
+
+### Full-stack
+Python, FastAPI, TypeScript, Node.js, NestJS, React, Angular, PostgreSQL
+
+## Featured Projects
+
+1. **Voice-to-Voice AI English Tutor**: AI-driven English learning product with real-time 1:1 lessons. Hybrid LLM stack with speech models (STT/TTS/S2S), GCP infrastructure for GPU inference, multi-agent system for adaptive lesson generation.
+
+2. **Multi-agent Automation Center**: B2B task automation with Gmail/Outlook integration. Continuously gathers context, groups messages, automates calendars, executes tasks based on email content.
+
+3. **Radio Analytics Big Data System**: Production system analyzing global radio signals. Migrated Java to Python, reduced costs 65%, added real-time anomaly detection with ML.
+
+## Website
+
+- [olivierh.dev](https://olivierh.dev): Main portfolio website
