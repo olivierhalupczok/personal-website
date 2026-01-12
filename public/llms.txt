@@ -1,8 +1,8 @@
 # Olivier Halupczok
 
-> GenAI Engineer with 3 years building AI products and 6 years in software engineering. Specializes in production chatbots, multi-agent systems, and RAG pipelines.
+> Full-stack GenAI Engineer who builds AI systems that work in production—not just demos. 3 years shipping GenAI products, 6 years in software engineering. Open to full-time roles.
 
-Olivier is a GenAI Engineer based in Poland. He is a member of the AI Working Group assisting the Polish Ministry of Digital Affairs on AI adoption strategy. Expert in AI-enhanced development with tools like Cursor and Claude Code.
+I build production AI systems: the model integration AND the infrastructure it runs on. Member of the AI Working Group assisting the Polish Ministry of Digital Affairs on AI adoption strategy. Based in Poland, available globally.
 
 ## Contact
 
@@ -13,26 +13,47 @@ Olivier is a GenAI Engineer based in Poland. He is a member of the AI Working Gr
 
 ## Expertise
 
-### LLMs & Agents
-OpenAI, Claude, PydanticAI, Dspy, LangChain, LangGraph, CrewAI, Guardrails
+### Core Specialization
+Voice AI, Multi-agent Systems, Production RAG, LLM Evaluation, Prompt Engineering
 
-### RAG & ML
-RAG pipelines, Vector databases, Embeddings, LLM evaluation, Prompt engineering, Agentic AI
+### GenAI Stack
+Claude, OpenAI, Gemini, LangGraph, CrewAI, PydanticAI, Dspy, Guardrails
 
-### Cloud & Infrastructure
-GCP Vertex AI, AWS, Vercel, Supabase, Docker, CI/CD
+### Production Infrastructure
+GCP Vertex AI, AWS, Docker, CI/CD, LLM Observability
 
 ### Full-stack
-Python, FastAPI, TypeScript, Node.js, NestJS, React, Angular, PostgreSQL
+Python, FastAPI, TypeScript, Node.js, React, PostgreSQL
 
 ## Featured Projects
 
-1. **Voice-to-Voice AI English Tutor**: AI-driven English learning product with real-time 1:1 lessons. Hybrid LLM stack with speech models (STT/TTS/S2S), GCP infrastructure for GPU inference, multi-agent system for adaptive lesson generation.
+1. **Boldare AI Assistant (Open Source)**: Co-author & Core Maintainer. NestJS library for rapid AI app prototyping with OpenAI Assistant API. Saves 1-2 weeks dev time. [GitHub](https://github.com/boldare/openai-assistant)
 
-2. **Multi-agent Automation Center**: B2B task automation with Gmail/Outlook integration. Continuously gathers context, groups messages, automates calendars, executes tasks based on email content.
+2. **Voice-to-Voice AI English Tutor**: End-to-end GenAI architecture for AI-driven English learning—real 1:1 lessons with a native speaker feel. Hybrid AI stack combining multiple LLM providers with open-source speech models (STT/TTS/S2S). GCP infrastructure for GPU inference, multi-agent system generating adaptive lesson plans.
 
-3. **Radio Analytics Big Data System**: Production system analyzing global radio signals. Migrated Java to Python, reduced costs 65%, added real-time anomaly detection with ML.
+3. **Bab Ajeer AI CV Import Tool**: Proposed and designed AI pipeline for Saudi Arabia's largest temporary work marketplace. Gemini-powered CV parser saves users 30+ min of manual entry—generates profiles in ~15s at $0.15/1,000 CVs. [Case Study](https://www.boldare.com/blog/case-study-bab-ajeer-ai-cv-creation-tool/)
+
+4. **Building Materials Trading AI Assistant**: WhatsApp-integrated AI assistant for bulk shipping platform—users trade and track cargo via natural language. OpenAI Assistant API with RAG, GPT-4. First solution in market. [Case Study](https://www.boldare.com/work/case-study-building-materials-ai-assistant/)
+
+5. **Traffic Family E-commerce AI**: AI-powered product content generation for Dutch price comparison platform. Saved €150K vs copywriters. [Case Study](https://www.boldare.com/work/case-study-improving-online-business-with-ai/)
+
+6. **AI Knowledge Base Chatbot**: Internal knowledge base PoC with 98-99% retrieval accuracy. [Case Study](https://www.boldare.com/work/ai-powered-chatbot-knowledge-base-case-study/)
+
+7. **Multi-agent Automation Center**: B2B task automation with Gmail/Outlook integration. Memory and retrieval system processing 1,000 emails/hour at ~$8 per 1,000 messages.
+
+8. **Radio Analytics Big Data System**: Production big data system analyzing global radio signals, processing 157 GB/month. Migrated Java → Python, 65% cost reduction.
+
+## Publications
+
+Case studies and articles on building production AI systems:
+
+- [Case Study: Bab Ajeer AI CV Creation Tool](https://www.boldare.com/blog/case-study-bab-ajeer-ai-cv-creation-tool/)
+- [Case Study: Building Materials Trading AI Assistant](https://www.boldare.com/work/case-study-building-materials-ai-assistant/)
+- [Case Study: Improving Online Business with AI](https://www.boldare.com/work/case-study-improving-online-business-with-ai/)
+- [AI-Powered Chatbot Knowledge Base](https://www.boldare.com/work/ai-powered-chatbot-knowledge-base-case-study/)
+- [Boldare AI Assistant: Launch AI Apps Fast](https://www.boldare.com/blog/boldare-ai-assistant-launch-ai-apps-fast/)
 
 ## Website
 
 - [olivierh.dev](https://olivierh.dev): Main portfolio website
+- [olivierh.dev/publications](https://olivierh.dev/publications): Articles and case studies

@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const publications = await getCollection('publications', ({ data }) => {
+  return !data.draft;
+});
+
+// Sort by date descending
+publications.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+};
+---
+
+<Layout
+  title="Publications - Olivier Halupczok"
+  description="Articles and publications on GenAI, multi-agent systems, voice AI, and production ML engineering."
+>
+  <Header />
+  <main>
+    <section class="publications-section">
+      <div class="container">
+        <h1 data-animate="left">Publications</h1>
+        <p class="publications-intro" data-animate="left" data-delay="1">
+          Articles on building AI systems that work in production.
+        </p>
+
+        {publications.length === 0 ? (
+          <p class="no-publications" data-animate data-delay="2">
+            Coming soon—check back for articles on GenAI, multi-agent systems, and production AI.
+          </p>
+        ) : (
+          <div class="publications-grid">
+            {publications.map((publication, index) => {
+              const isExternal = !!publication.data.externalUrl;
+              const href = isExternal ? publication.data.externalUrl : `/publications/${publication.slug}`;
+
+              return (
+                <a
+                  href={href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener" : undefined}
+                  class="publication-card-link"
+                  data-animate="scale"
+                  data-delay={Math.min(index + 2, 8)}
+                >
+                  <article class="publication-card glass">
+                    <div class="publication-meta">
+                      <time datetime={publication.data.date.toISOString()}>
+                        {formatDate(publication.data.date)}
+                      </time>
+                      {publication.data.readingTime && (
+                        <span class="reading-time">{publication.data.readingTime} min read</span>
+                      )}
+                      {isExternal && (
+                        <span class="external-badge">External</span>
+                      )}
+                    </div>
+                    <h2>{publication.data.title}</h2>
+                    <p>{publication.data.description}</p>
+                    {publication.data.tags.length > 0 && (
+                      <div class="publication-tags">
+                        {publication.data.tags.map(tag => (
+                          <span class="publication-tag">{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                    <div class="publication-cta">
+                      <span class="cta-label">{isExternal ? 'Read on Boldare' : 'Read Article'}</span>
+                      <span class="cta-arrow">→</span>
+                    </div>
+                  </article>
+                </a>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .publications-section {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+    min-height: 100vh;
+  }
+  .publications-section h1 {
+    margin-bottom: 0.5rem;
+  }
+  .publications-intro {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin-bottom: 3rem;
+  }
+  .no-publications {
+    font-size: 1.1rem;
+    margin-top: 2rem;
+  }
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .publication-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    transition: transform 0.2s;
+  }
+  .publication-card-link:hover {
+    transform: translateY(-4px);
+  }
+  .publication-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: border-color 0.3s, box-shadow 0.4s;
+    border-color: rgba(37, 99, 235, 0.2);
+  }
+  .publication-card-link:hover .publication-card {
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+  }
+  .publication-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+  }
+  .reading-time {
+    color: #6b7280;
+  }
+  .external-badge {
+    background: rgba(37, 99, 235, 0.1);
+    color: #3b82f6;
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .publication-card h2 {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .publication-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  .publication-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .publication-tag {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.1);
+    color: #3b82f6;
+  }
+  .publication-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    color: #2563eb;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .cta-arrow {
+    transition: transform 0.2s;
+  }
+  .publication-card-link:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+</style>

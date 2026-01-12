@@ -49,7 +49,7 @@ export default function ContactForm() {
     setError('');
 
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('https://formspree.io/f/xqeekppq', {
         method: 'POST',
         body: formData,
         headers: { Accept: 'application/json' }

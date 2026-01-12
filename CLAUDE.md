@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+# Sources of information
+- [LinkedIn](https://www.linkedin.com/in/olivier-halupczok/)
+- cv tmp/cv.pdf
+
+
 ## Commands
 
 ```bash
@@ -17,6 +22,8 @@ npm run preview  # Preview production build
 ```bash
 npm run build && gzip -c dist/index.html | wc -c
 ```
+
+You must not mention that I advise the Polish Ministry of Digital Affairs on AI adoption strategy. I
 
 ## Architecture
 

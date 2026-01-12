@@ -1,0 +1,331 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const publications = await getCollection('publications');
+  return publications
+    .filter(pub => !pub.data.externalUrl) // Only generate pages for non-external posts
+    .map(pub => ({
+      params: { slug: pub.slug },
+      props: { publication: pub },
+    }));
+}
+
+const { publication } = Astro.props;
+const { Content, headings } = await publication.render();
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
+// Calculate reading time if not provided
+const wordCount = publication.body.split(/\s+/).length;
+const readingTime = publication.data.readingTime || Math.ceil(wordCount / 200);
+
+// Generate ToC from headings
+const toc = headings.filter(h => h.depth <= 3);
+---
+
+<Layout
+  title={`${publication.data.title} - Olivier Halupczok`}
+  description={publication.data.description}
+>
+  <Header />
+  <main>
+    <article class="publication-article">
+      <div class="container">
+        <header class="article-header" data-animate="left">
+          <a href="/publications" class="back-link">← Back to Publications</a>
+          <div class="article-meta">
+            <time datetime={publication.data.date.toISOString()}>
+              {formatDate(publication.data.date)}
+            </time>
+            <span class="reading-time">{readingTime} min read</span>
+          </div>
+          <h1>{publication.data.title}</h1>
+          <p class="article-description">{publication.data.description}</p>
+          {publication.data.tags.length > 0 && (
+            <div class="article-tags">
+              {publication.data.tags.map(tag => (
+                <span class="article-tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </header>
+
+        <div class="article-layout">
+          {toc.length > 2 && (
+            <aside class="toc-sidebar" data-animate="right" data-delay="1">
+              <nav class="toc glass">
+                <h4>Table of Contents</h4>
+                <ul>
+                  {toc.map(heading => (
+                    <li class={`toc-level-${heading.depth}`}>
+                      <a href={`#${heading.slug}`}>{heading.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </aside>
+          )}
+
+          <div class="article-content" data-animate="blur" data-delay="2">
+            <Content />
+          </div>
+        </div>
+
+        <footer class="article-footer" data-animate data-delay="3">
+          <div class="share-section glass">
+            <h4>Share this article</h4>
+            <div class="share-links">
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(publication.data.title)}&url=${encodeURIComponent(`https://olivierh.dev/publications/${publication.slug}`)}`}
+                target="_blank"
+                rel="noopener"
+                class="share-link"
+              >
+                Twitter/X
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://olivierh.dev/publications/${publication.slug}`)}`}
+                target="_blank"
+                rel="noopener"
+                class="share-link"
+              >
+                LinkedIn
+              </a>
+              <button class="share-link copy-link" data-url={`https://olivierh.dev/publications/${publication.slug}`}>
+                Copy Link
+              </button>
+            </div>
+          </div>
+          <a href="/publications" class="back-link">← Back to Publications</a>
+        </footer>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  document.querySelectorAll('.copy-link').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const url = btn.getAttribute('data-url');
+      if (url) {
+        await navigator.clipboard.writeText(url);
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = originalText, 2000);
+      }
+    });
+  });
+</script>
+
+<style>
+  .publication-article {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+  }
+  .article-header {
+    max-width: 720px;
+    margin-bottom: 3rem;
+  }
+  .back-link {
+    display: inline-block;
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover {
+    color: #fff;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+  .article-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  .article-description {
+    font-size: 1.25rem;
+    color: #a0a0b0;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .article-tag {
+    padding: 0.375rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.1);
+    color: #3b82f6;
+  }
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  @media (min-width: 1024px) {
+    .article-layout {
+      grid-template-columns: 1fr 250px;
+    }
+  }
+  .toc-sidebar {
+    order: 2;
+  }
+  @media (min-width: 1024px) {
+    .toc-sidebar {
+      order: 0;
+      position: sticky;
+      top: 6rem;
+      height: fit-content;
+    }
+  }
+  .toc {
+    padding: 1.25rem;
+  }
+  .toc h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+  .toc ul {
+    list-style: none;
+  }
+  .toc li {
+    margin-bottom: 0.5rem;
+  }
+  .toc a {
+    color: #a0a0b0;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  .toc a:hover {
+    color: #fff;
+  }
+  .toc-level-3 {
+    padding-left: 1rem;
+  }
+  .article-content {
+    max-width: 720px;
+  }
+  .article-content :global(h2) {
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  .article-content :global(h3) {
+    font-size: 1.35rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #fff;
+  }
+  .article-content :global(p) {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .article-content :global(li) {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    color: #a0a0b0;
+  }
+  .article-content :global(pre) {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+  .article-content :global(code) {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9rem;
+  }
+  .article-content :global(p code) {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+  }
+  .article-content :global(blockquote) {
+    border-left: 3px solid #2563eb;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #a0a0b0;
+  }
+  .article-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+  .article-content :global(a) {
+    color: #3b82f6;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .article-content :global(a:hover) {
+    color: #60a5fa;
+  }
+  .article-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .share-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .share-section h4 {
+    font-size: 0.9rem;
+    color: #a0a0b0;
+    margin-bottom: 1rem;
+  }
+  .share-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .share-link {
+    padding: 0.5rem 1rem;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    border-radius: 6px;
+    color: #3b82f6;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .share-link:hover {
+    background: rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
+  }
+</style>

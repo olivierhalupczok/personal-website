@@ -1,24 +1,78 @@
 ---
 const projects = [
   {
+    title: "Boldare AI Assistant (Open Source)",
+    role: "Co-author & Core Maintainer",
+    description: "Open-source NestJS library for rapid AI app prototyping with OpenAI Assistant API. Features function calling, TTS/STT, file support, WebSockets, REST API. Available on GitHub and npm.",
+    tags: ["Open Source", "NestJS", "OpenAI Assistant API", "npm"],
+    metrics: ["Saves 1-2 weeks dev time"],
+    link: "https://github.com/boldare/openai-assistant",
+    linkType: "github"
+  },
+  {
     title: "Voice-to-Voice AI English Tutor",
     role: "GenAI Engineer / AI Tech Lead",
-    description: "AI-driven English learning product with real-time 1:1 lessons. Hybrid LLM stack with speech models (STT/TTS/S2S), GCP infrastructure for GPU inference, multi-agent system for adaptive lesson generation.",
-    tags: ["Multi-LLM", "Voice AI", "GCP", "Multi-agent"]
+    description: "End-to-end GenAI architecture for AI-driven English learning—real 1:1 lessons with a native speaker feel. Hybrid AI stack combining multiple LLM providers with open-source speech models (STT/TTS/S2S). GCP infrastructure for GPU inference, multi-agent system generating adaptive lesson plans.",
+    tags: ["Multi-LLM", "Voice AI", "GCP", "Multi-agent"],
+    metrics: []
+  },
+  {
+    title: "Bab Ajeer AI CV Import Tool",
+    role: "GenAI Engineer",
+    description: "Proposed and designed AI pipeline for Saudi Arabia's largest temporary work marketplace. Gemini-powered CV parser replacing manual entry. A/B tested AI messaging strategy.",
+    tags: ["Gemini", "Document AI", "A/B Testing"],
+    metrics: ["~15s per CV", "$0.15/1K CVs", "Saves 30+ min/user", "18% conversion ↑"],
+    link: "https://www.boldare.com/blog/case-study-bab-ajeer-ai-cv-creation-tool/",
+    linkType: "case-study"
+  },
+  {
+    title: "Building Materials Trading AI Assistant",
+    role: "GenAI Engineer",
+    description: "WhatsApp-integrated AI assistant for bulk shipping platform—users trade and track cargo via natural language. OpenAI Assistant API with RAG, GPT-4. Presented at Intercem 2023 Istanbul.",
+    tags: ["OpenAI Assistant API", "RAG", "WhatsApp", "GPT-4"],
+    metrics: ["First in market"],
+    link: "https://www.boldare.com/work/case-study-building-materials-ai-assistant/",
+    linkType: "case-study"
+  },
+  {
+    title: "Traffic Family E-commerce AI",
+    role: "GenAI Engineer",
+    description: "AI-powered product content generation for Dutch price comparison platform. OpenAI API generates pros/cons for all products automatically.",
+    tags: ["OpenAI API", "E-commerce", "SEO", "Content Gen"],
+    metrics: ["€150K saved", "6 weeks delivery"],
+    link: "https://www.boldare.com/work/case-study-improving-online-business-with-ai/",
+    linkType: "case-study"
+  },
+  {
+    title: "AI Knowledge Base Chatbot",
+    role: "GenAI Engineer",
+    description: "Internal knowledge base PoC—employees query company data via conversational AI. Built with ChatGPT and OpenAI Assistant by small team.",
+    tags: ["OpenAI Assistant", "RAG", "Knowledge Base"],
+    metrics: ["98-99% accuracy"],
+    link: "https://www.boldare.com/work/ai-powered-chatbot-knowledge-base-case-study/",
+    linkType: "case-study"
   },
   {
     title: "Multi-agent Automation Center",
     role: "GenAI Engineer",
-    description: "B2B task automation with Gmail/Outlook integration. Continuously gathers context, groups messages, automates calendars, executes tasks based on email content.",
-    tags: ["Multi-agent", "Email API", "Automation"]
+    description: "B2B task automation with Gmail/Outlook integration. State-of-the-art memory and retrieval system. Continuously gathers context, groups messages, automates calendars.",
+    tags: ["Multi-agent", "Email API", "RAG", "Automation"],
+    metrics: ["1K emails/hr", "$8/1K msgs"]
   },
   {
     title: "Radio Analytics Big Data System",
     role: "Software Engineer",
-    description: "Production system analyzing global radio signals. Migrated Java → Python, reduced costs 65%, added real-time anomaly detection with ML.",
-    tags: ["Python", "FastAPI", "Kafka", "Spark", "ML"]
+    description: "Redesigned production big data system analyzing global radio signals. Migrated Java → Python, reduced microservices count, redesigned DB schema. Added real-time anomaly detection and ML-based transmission prediction.",
+    tags: ["Python", "FastAPI", "Kafka", "Spark", "ML"],
+    metrics: ["Processes 157 GB/mo", "65% cost ↓"]
   }
 ];
+
+const getLinkLabel = (linkType: string) => {
+  if (linkType === 'github') return 'View on GitHub';
+  if (linkType === 'case-study') return 'Read Case Study';
+  return 'Learn More';
+};
 ---
 
 <section id="projects">
@@ -26,16 +80,49 @@ const projects = [
     <h2 data-animate="left">Projects</h2>
     <div class="projects-grid">
       {projects.map((project, index) => (
-        <article class="project-card glass" data-animate="scale" data-delay={index + 1}>
-          <h3>{project.title}</h3>
-          <p class="role">{project.role}</p>
-          <p>{project.description}</p>
-          <div class="project-tags">
-            {project.tags.map(tag => (
-              <span class="project-tag">{tag}</span>
-            ))}
-          </div>
-        </article>
+        project.link ? (
+          <a href={project.link} target="_blank" rel="noopener" class="project-card-link" data-animate="scale" data-delay={index + 1}>
+            <article class="project-card glass has-link">
+              <h3>{project.title}</h3>
+              <p class="role">{project.role}</p>
+              <p>{project.description}</p>
+              {project.metrics && project.metrics.length > 0 && (
+                <div class="project-metrics">
+                  {project.metrics.map(metric => (
+                    <span class="metric-chip">{metric}</span>
+                  ))}
+                </div>
+              )}
+              <div class="project-tags">
+                {project.tags.map(tag => (
+                  <span class="project-tag">{tag}</span>
+                ))}
+              </div>
+              <div class="project-cta">
+                <span class="cta-label">{getLinkLabel(project.linkType)}</span>
+                <span class="cta-arrow">→</span>
+              </div>
+            </article>
+          </a>
+        ) : (
+          <article class="project-card glass" data-animate="scale" data-delay={index + 1}>
+            <h3>{project.title}</h3>
+            <p class="role">{project.role}</p>
+            <p>{project.description}</p>
+            {project.metrics && project.metrics.length > 0 && (
+              <div class="project-metrics">
+                {project.metrics.map(metric => (
+                  <span class="metric-chip">{metric}</span>
+                ))}
+              </div>
+            )}
+            <div class="project-tags">
+              {project.tags.map(tag => (
+                <span class="project-tag">{tag}</span>
+              ))}
+            </div>
+          </article>
+        )
       ))}
     </div>
   </div>
@@ -44,5 +131,61 @@ const projects = [
 <style>
   .projects-grid {
     margin-top: 2rem;
+  }
+  .project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    height: 100%;
+    transition: transform 0.2s;
+  }
+  .project-card-link:hover {
+    transform: translateY(-4px);
+  }
+  .project-card.has-link {
+    border-color: rgba(37, 99, 235, 0.2);
+  }
+  .project-card-link:hover .project-card {
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+  }
+  .project-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .metric-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 4px;
+    color: #10b981;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .project-tags {
+    margin-top: auto;
+  }
+  .project-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    color: #2563eb;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .cta-arrow {
+    transition: transform 0.2s;
+  }
+  .project-card-link:hover .cta-arrow {
+    transform: translateX(4px);
   }
 </style>
