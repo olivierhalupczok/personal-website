@@ -6,7 +6,7 @@ I build production AI systems: the model integration AND the infrastructure it r
 
 ## Contact
 
-- [Email](mailto:olivierhalupczok@gmail.com): Direct contact
+- [Email](mailto:olivier@olivierh.dev): Direct contact
 - [LinkedIn](https://www.linkedin.com/in/olivier-halupczok/): Professional profile
 - [GitHub](https://github.com/olivierhalupczok): Code repositories
 - [Book a call](https://calendly.com/olivierhalupczok/30min): Schedule a 30-minute meeting
