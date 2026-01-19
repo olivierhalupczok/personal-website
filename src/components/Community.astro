@@ -55,6 +55,7 @@ const calendars = [
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: clip;
   }
 
   .carousel-scene {
@@ -236,6 +237,29 @@ const calendars = [
   // Pause on hover
   rotator?.addEventListener('mouseenter', () => clearInterval(autoRotate));
   rotator?.addEventListener('mouseleave', () => {
+    autoRotate = setInterval(() => rotate(1), 4000);
+  });
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const scene = document.querySelector('.carousel-scene') as HTMLElement;
+
+  scene?.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    clearInterval(autoRotate);
+  }, { passive: true });
+
+  scene?.addEventListener('touchmove', (e) => {
+    touchEndX = e.touches[0].clientX;
+  }, { passive: true });
+
+  scene?.addEventListener('touchend', () => {
+    const diff = touchStartX - touchEndX;
+    const threshold = 50;
+    if (Math.abs(diff) > threshold) {
+      rotate(diff > 0 ? 1 : -1);
+    }
     autoRotate = setInterval(() => rotate(1), 4000);
   });
 </script>
