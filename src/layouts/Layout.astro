@@ -37,6 +37,7 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0a0a12" />
     <title>{title}</title>
 
     <!-- JSON-LD Structured Data -->
@@ -78,6 +79,7 @@ const ogImage = `${siteUrl}/og-image.png`;
     <script is:inline>
       const o=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add('visible'),o.unobserve(e.target))})},{threshold:.1});
       document.querySelectorAll('[data-animate]').forEach(e=>o.observe(e));
+      window.addEventListener('pageshow',e=>{if(e.persisted){document.querySelectorAll('[data-animate]').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<window.innerHeight+100)el.classList.add('visible')})}});
       const n=document.querySelector('nav');
       const blobs=document.querySelectorAll('.blob');
       window.addEventListener('scroll',()=>{
