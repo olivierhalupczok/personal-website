@@ -23,7 +23,14 @@ npm run preview  # Preview production build
 npm run build && gzip -c dist/index.html | wc -c
 ```
 
-You must not mention that I advise the Polish Ministry of Digital Affairs on AI adoption strategy. I
+## Important: Ministry Affiliation Wording
+
+**Legal distinction** - Always use indirect wording for the Ministry relationship:
+
+- **OK**: "Member of the AI Working Group assisting the Polish Ministry of Digital Affairs on AI adoption strategy" (group membership - indirect)
+- **NOT OK**: "I advise/assist the Polish Ministry of Digital Affairs" (direct affiliation - legal issues)
+
+The key is that Olivier is a member of **a working group** that assists the Ministry, not directly affiliated with the Ministry itself.
 
 ## Architecture
 

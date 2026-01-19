@@ -53,6 +53,14 @@ Case studies and articles on building production AI systems:
 - [AI-Powered Chatbot Knowledge Base](https://www.boldare.com/work/ai-powered-chatbot-knowledge-base-case-study/)
 - [Boldare AI Assistant: Launch AI Apps Fast](https://www.boldare.com/blog/boldare-ai-assistant-launch-ai-apps-fast/)
 
+## Community
+
+I curate AI event calendars across Poland, helping builders find meetups, workshops, and conferences. Over 2,000 views and 100+ subscribers.
+
+- [Silesia AI](https://lu.ma/silesia-ai): Katowice & Upper Silesia events
+- [Warsaw AI](https://lu.ma/warsaw-ai-events): Warsaw & Masovia events
+- [Wrocław AI](https://lu.ma/wroclaw-ai): Wrocław & Lower Silesia events
+
 ## Website
 
 - [olivierh.dev](https://olivierh.dev): Main portfolio website
