@@ -8,7 +8,7 @@ import photo from '/public/imgs/photo.png';
     <h2 data-animate="left">About</h2>
     <div class="about-grid">
       <div class="about-photo" data-animate="scale" data-delay="1">
-        <Image src={photo} alt="Olivier Halupczok" width={280} height={280} loading="lazy" />
+        <Image src={photo} alt="Olivier Halupczok" widths={[120, 240, 280]} sizes="(max-width: 768px) 120px, 280px" loading="lazy" />
       </div>
       <div class="about-text">
         <p data-animate="blur" data-delay="2">

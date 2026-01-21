@@ -7,6 +7,6 @@ export default defineConfig({
   integrations: [preact(), sitemap()],
   compressHTML: true,
   build: {
-    inlineStylesheets: 'auto'
+    inlineStylesheets: 'always'
   }
 });
