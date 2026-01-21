@@ -15,7 +15,7 @@ body {
 /* Typography */
 h1, h2, h3 { line-height: 1.2; font-weight: 600; }
 h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); color: #a0a0b0; }
+h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); color: #fff; }
 h3 { font-size: 1.25rem; }
 p { color: #a0a0b0; }
 a { color: #2563eb; text-decoration: none; transition: color 0.2s; }
